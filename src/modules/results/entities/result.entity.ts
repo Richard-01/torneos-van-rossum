@@ -2,7 +2,8 @@ import {
   Entity, 
   Column, 
   PrimaryGeneratedColumn, 
-  ManyToOne 
+  ManyToOne,
+  DeleteDateColumn 
 } from 'typeorm';
 import { Player } from '../../players/entities/player.entity';
 import { Tournament } from '../../tournaments/entities/tournament.entity';
@@ -15,6 +16,9 @@ export class Result {
   @ManyToOne(() => Tournament, (tournament) => tournament.results)
   tournament: Tournament;
 
+  @ManyToOne(() => Player, (player) => player.results)
+  player: Player;
+
   @ManyToOne(() => Player)
   winner: Player;
 
@@ -26,4 +30,7 @@ export class Result {
 
   @Column()
   loserScore: number;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }
