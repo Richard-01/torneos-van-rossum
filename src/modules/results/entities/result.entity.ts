@@ -1,4 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { 
+  Entity, 
+  Column, 
+  PrimaryGeneratedColumn, 
+  ManyToOne 
+} from 'typeorm';
 import { Player } from '../../players/entities/player.entity';
 import { Tournament } from '../../tournaments/entities/tournament.entity';
 
@@ -7,7 +12,7 @@ export class Result {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Tournament, tournament => tournament.results)
+  @ManyToOne(() => Tournament, (tournament) => tournament.results)
   tournament: Tournament;
 
   @ManyToOne(() => Player)
