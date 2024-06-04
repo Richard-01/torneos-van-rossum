@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, DeleteDateColumn } from 'typeorm';
 import { Tournament } from '../../tournaments/entities/tournament.entity';
 
 @Entity()
@@ -17,4 +17,7 @@ export class Player {
 
   @ManyToMany(() => Tournament, (tournament) => tournament.players)
   tournaments: Tournament[];
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }

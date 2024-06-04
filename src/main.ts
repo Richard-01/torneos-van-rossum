@@ -16,8 +16,8 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('Digital API Tournament-VanRossum')
-    .setDescription('API for managing the catalog of books, authors and sales in a digital bookstore.')
+    .setTitle('Tournament-VanRossum API')
+    .setDescription('API for managing esports tournaments.')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
@@ -25,6 +25,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);
 
-  await app.listen(process.env.PORT || 3000);
+  await app.listen(process.env.DB_PORT || 3000);
 }
 bootstrap();
