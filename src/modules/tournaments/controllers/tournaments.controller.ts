@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -20,9 +21,11 @@ import {
 import { TournamentsService } from '../services/tournaments.service';
 import { CreateTournamentDto } from '../dto/createTournamentDto';
 import { UpdateTournamentDto } from '../dto/updateTournamentDto';
+import { ApiKeyGuard } from 'src/common/guards/guards.guard';
 
 @ApiTags('Tournaments')
 @Controller('tournaments')
+@UseGuards(ApiKeyGuard)
 export class TournamentsController {
   constructor(private readonly tournamentsService: TournamentsService) {}
 
