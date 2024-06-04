@@ -5,6 +5,7 @@ import {
   ManyToMany,
   JoinTable,
   OneToMany,
+  DeleteDateColumn,
 } from 'typeorm';
 import { Player } from '../../players/entities/player.entity';
 import { Result } from '../../results/entities/result.entity';
@@ -29,4 +30,7 @@ export class Tournament {
 
   @OneToMany(() => Result, (result) => result.tournament)
   results: Result[];
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }
