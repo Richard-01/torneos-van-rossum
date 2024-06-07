@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Result } from '../entities/result.entity';
-import { CreatePlayerDto } from '../dto/createResultDto';
-import { UpdatePlayerDto } from '../dto/updateResultDto';
+import { CreateResultDto } from '../dto/createResultDto';
+import { UpdateResultDto } from '../dto/updateResultDto';
 
 @Injectable()
 export class ResultsService {
@@ -11,7 +11,7 @@ export class ResultsService {
     @InjectRepository(Result) private resultRepository: Repository<Result>,
   ) {}
 
-  async create(createResultDto: CreatePlayerDto): Promise<Result> {
+  async create(createResultDto: CreateResultDto): Promise<Result> {
     const result = this.resultRepository.create(createResultDto);
     return this.resultRepository.save(result);
   }
@@ -38,7 +38,7 @@ export class ResultsService {
     });
   }
 
-  async update(id: number, updateResultDto: UpdatePlayerDto): Promise<Result> {
+  async update(id: number, updateResultDto: UpdateResultDto): Promise<Result> {
     await this.resultRepository.update(id, updateResultDto);
     return this.resultRepository.findOne({
       where: { id },

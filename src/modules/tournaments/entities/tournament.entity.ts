@@ -24,7 +24,7 @@ export class Tournament {
   @Column()
   date: Date;
 
-  @ManyToMany(() => Player)
+  @ManyToMany(() => Player, (player) => player.tournaments)
   @JoinTable()
   players: Player[];
 

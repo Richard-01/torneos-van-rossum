@@ -18,8 +18,8 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { ResultsService } from '../services/results.service';
-import { CreatePlayerDto } from '../dto/createResultDto';
-import { UpdatePlayerDto } from '../dto/updateResultDto';
+import { CreateResultDto } from '../dto/createResultDto';
+import { UpdateResultDto } from '../dto/updateResultDto';
 
 @ApiTags('Results')
 @Controller('results')
@@ -31,7 +31,7 @@ export class ResultsController {
   @ApiCreatedResponse({ description: 'The result has been successfully created'})
   @ApiBadRequestResponse({ description: 'The result could not be created' })
   @ApiInternalServerErrorResponse({ description: 'Internal server error' })
-  create(@Body() createResultDto: CreatePlayerDto) {
+  create(@Body() createResultDto: CreateResultDto) {
     return this.resultsService.create(createResultDto);
   }
 
@@ -63,7 +63,7 @@ export class ResultsController {
   @ApiNotFoundResponse({ description: 'The result could not be found' })
   @ApiBadRequestResponse({ description: 'The result could not be updated' })
   @ApiInternalServerErrorResponse({ description: 'Internal server error' })
-  update(@Param('id') id: number, @Body() updateResultDto: UpdatePlayerDto) {
+  update(@Param('id') id: number, @Body() updateResultDto: UpdateResultDto) {
     return this.resultsService.update(+id, updateResultDto);
   }
 

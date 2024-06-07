@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, DeleteDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, DeleteDateColumn, OneToMany } from 'typeorm';
 import { Tournament } from '../../tournaments/entities/tournament.entity';
 import { Result } from 'src/modules/results/entities/result.entity';
 
@@ -19,7 +19,7 @@ export class Player {
   @ManyToMany(() => Tournament, (tournament) => tournament.players)
   tournaments: Tournament[];
 
-  @ManyToMany(() => Tournament, (tournament) => tournament.players)
+  @OneToMany(() => Result, (result) => result.player)
   results: Result[];
 
   @DeleteDateColumn()

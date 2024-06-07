@@ -1,8 +1,8 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { CreatePlayerDto } from './createResultDto';
+import { CreateResultDto } from './createResultDto';
 
-export class UpdatePlayerDto extends PartialType(CreatePlayerDto) {
+export class UpdateResultDto extends PartialType(CreateResultDto) {
   @ApiPropertyOptional({
     description: 'Score of the winning player (optional)',
     example: 25,
